@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { Children, FormEvent, useState } from "react";
 import logoImage from "../../../assets/logo.svg";
 import "./todo.styles.css";
 import { TODO_LIST } from "./todo.constants";
-import { ITodoTasksStatus } from "./todo.types";
+import { ITodoTask, ITodoTasksStatus } from "./todo.types";
 
 function toggleTaskStatus(status: ITodoTasksStatus): ITodoTasksStatus {
   return status === "done" ? "pending" : "done";
@@ -11,7 +11,23 @@ function toggleTaskStatus(status: ITodoTasksStatus): ITodoTasksStatus {
 export function TodoTemplate() {
   const [tasks, setTasks] = useState(TODO_LIST);
 
-  function handleSearch() {}
+  function handleSearch(e: FormEvent<HTMLFormElement>, tasks: ITodoTask[]) {
+    e.preventDefault();
+    const search = (e.target as HTMLFormElement).search.value;
+
+    if (search === "") {
+      setTasks(TODO_LIST);
+      return;
+    }
+
+
+    setTasks(tasks.filter((task) => {
+      const childrenArray = Children.toArray(task.description.props?.children);
+      const stringChildren = childrenArray?.filter(child => typeof child === "string");
+      return task.title.includes(search) || stringChildren.some((child) => child.includes(search))
+    }))
+
+  }
 
   function handleDeleteTask(taskId: string) {
     setTasks((currentTasks) => {
@@ -53,7 +69,7 @@ export function TodoTemplate() {
           Items obrigatórios marcados com arteristico (<strong>*</strong>)
         </p>
         <div className="todo__wrapper">
-          <form className="todo__search" onSubmit={handleSearch}>
+          <form className="todo__search" onSubmit={(e) => handleSearch(e, tasks)}>
             <input id="search" placeholder="busca por texto..." />
             <button type="submit">buscar</button>
           </form>
