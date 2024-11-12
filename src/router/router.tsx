@@ -3,6 +3,8 @@ import { routes } from "./routes";
 import HomePage from "../pages/home/home.page";
 import TodoPage from "../pages/todo/todo.page";
 import LoginPage from "../pages/login/login.page";
+import IBankingPage from "../pages/ibanking/ibanking.page";
+import { PrivateRoute } from "./private-route";
 
 export const router = createBrowserRouter([
   {
@@ -16,5 +18,15 @@ export const router = createBrowserRouter([
   {
     path: routes.LOGIN,
     element: <LoginPage />,
+  },
+  {
+    path: routes.IBANKING,
+    element: <PrivateRoute />,
+    children: [
+      {
+        path: "",
+        element: <IBankingPage />,
+      }
+    ]
   }
 ])
