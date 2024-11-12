@@ -23,7 +23,7 @@ function App() {
         </p>
         <ul className="buttons">
           <li>
-            <a href="#">TO-DO LIST</a>
+            <a href="#">TODO LIST</a>
           </li>
           <li>
             <a href="#">IBANKING</a>
