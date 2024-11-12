@@ -8,14 +8,16 @@ function toggleTaskStatus(status: ITodoTasksStatus): ITodoTasksStatus {
   return status === "done" ? "pending" : "done";
 }
 
-
-
 export function TodoTemplate() {
   const [tasks, setTasks] = useState(TODO_LIST);
 
   function handleSearch() {}
 
-  function handleDeleteTask(itemId: string) {}
+  function handleDeleteTask(taskId: string) {
+    setTasks((currentTasks) => {
+      return currentTasks.filter((task) => task.id !== taskId);
+    });
+  }
 
   function handleChangeTaskStatus(TaskId: string) {
     setTasks((currentTasks) => {
