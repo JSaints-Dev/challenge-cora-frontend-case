@@ -2,15 +2,34 @@ import { useState } from "react";
 import logoImage from "../../../assets/logo.svg";
 import "./todo.styles.css";
 import { TODO_LIST } from "./todo.constants";
+import { ITodoTasksStatus } from "./todo.types";
+
+function toggleTaskStatus(status: ITodoTasksStatus): ITodoTasksStatus {
+  return status === "done" ? "pending" : "done";
+}
+
+
 
 export function TodoTemplate() {
-  const [items, setItems] = useState(TODO_LIST);
+  const [tasks, setTasks] = useState(TODO_LIST);
 
   function handleSearch() {}
 
   function handleDeleteTask(itemId: string) {}
 
-  function handleChangeTaskStatus(itemId: string, status: string) {}
+  function handleChangeTaskStatus(TaskId: string) {
+    setTasks((currentTasks) => {
+      return currentTasks.map((task) => {
+        if (task.id === TaskId) {
+          return {
+            ...task,
+            status: toggleTaskStatus(task.status),
+          };
+        }
+        return task;
+      });
+    });
+  }
 
   return (
     <main id="page" className="todo">
@@ -38,29 +57,31 @@ export function TodoTemplate() {
           </form>
 
           <ul className="todo__list">
-            {items.length === 0 && (
+            {tasks.length === 0 && (
               <span>
                 <strong>Ops!!!</strong> Nenhum resultado foi encontrado
                 &#128533;
               </span>
             )}
-            {items?.map((item, i) => {
+            {tasks?.map((task, i) => {
               return (
-                <li key={item.id}>
+                <li key={task.id}>
                   <span>
                     {i + 1}
-                    {item.required ? "*" : ""}.
+                    {task.required ? "*" : ""}.
                   </span>
                   <div className="todo__content">
                     <h3>
-                      {item.title}
-                      <span data-type={item.status}>{item.status}</span>
+                      {task.title}
+                      <span data-type={task.status} className="button__status">
+                        {task.status}
+                      </span>
                     </h3>
-                    <p>{item.description}</p>
+                    <p>{task.description}</p>
 
-                    {item.links && item.links.length > 0 && (
+                    {task.links && task.links.length > 0 && (
                       <div className="todo__links">
-                        {item?.links?.map((link) => (
+                        {task?.links?.map((link) => (
                           <a key={link.name} target="_blank" href={link.url}>
                             {link.name}
                           </a>
@@ -69,18 +90,18 @@ export function TodoTemplate() {
                     )}
 
                     <div className="todo__actions">
-                      <button onClick={() => handleDeleteTask(item.id)}>
+                      <button onClick={() => handleDeleteTask(task.id)}>
                         delete
                       </button>
 
                       <button
                         onClick={() =>
-                          handleChangeTaskStatus(item.id, item.status)
+                          handleChangeTaskStatus(task.id)
                         }
                       >
                         change to{" "}
                         <strong>
-                          <u>{item.status === "done" ? "pending" : "done"}</u>
+                          <u>{toggleTaskStatus(task.status)}</u>
                         </strong>
                       </button>
                     </div>

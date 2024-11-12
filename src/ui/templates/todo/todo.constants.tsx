@@ -1,6 +1,6 @@
-import { ITodoItem } from "./todo.types";
+import { ITodoTask } from "./todo.types";
 
-export const TODO_LIST: ITodoItem[] = [
+export const TODO_LIST: ITodoTask[] = [
   {
     id: "5ce31291-d06b-4940-9d14-0f41d116fe76",
     ref: "1",
@@ -16,7 +16,7 @@ export const TODO_LIST: ITodoItem[] = [
         correta de tasks? Parabéns, você finalizou a sua primeira task &#127881;
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
   },
   {
@@ -114,7 +114,7 @@ export const TODO_LIST: ITodoItem[] = [
     ],
   },
   {
-    id: "5ce31291-d06b-4940-9d14-0f41d116fe76",
+    id: "5ce31291-d06b-4940-9d14-0f41d116ze76",
     ref: "1",
     title: "Filtro por tipo de transação",
     description: (
