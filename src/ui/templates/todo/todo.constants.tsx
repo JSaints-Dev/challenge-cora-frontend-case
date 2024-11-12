@@ -41,7 +41,7 @@ export const TODO_LIST: ITodoTask[] = [
         5. Alguns links não estão funcionando.
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
   },
   {
