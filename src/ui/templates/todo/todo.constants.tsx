@@ -1,6 +1,6 @@
-import { ITodoItem } from "./todo.types";
+import { ITodoTask } from "./todo.types";
 
-export const TODO_LIST: ITodoItem[] = [
+export const TODO_LIST: ITodoTask[] = [
   {
     id: "5ce31291-d06b-4940-9d14-0f41d116fe76",
     ref: "1",
@@ -16,7 +16,7 @@ export const TODO_LIST: ITodoItem[] = [
         correta de tasks? Parabéns, você finalizou a sua primeira task &#127881;
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
   },
   {
@@ -41,7 +41,7 @@ export const TODO_LIST: ITodoItem[] = [
         5. Alguns links não estão funcionando.
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
   },
   {
@@ -82,7 +82,7 @@ export const TODO_LIST: ITodoItem[] = [
     links: [
       {
         name: "endpoint de autenticação",
-        link: "http://localhost:3000/auth",
+        url: "https://github.com/corabank/frontend-case?tab=readme-ov-file#auth",
       },
     ],
   },
@@ -109,12 +109,12 @@ export const TODO_LIST: ITodoItem[] = [
       },
       {
         name: "endpoint de lista",
-        link: "http://localhost:3000/list",
+        url: "https://github.com/corabank/frontend-case?tab=readme-ov-file#list",
       },
     ],
   },
   {
-    id: "5ce31291-d06b-4940-9d14-0f41d116fe76",
+    id: "5ce31291-d06b-4940-9d14-0f41d116ze76",
     ref: "1",
     title: "Filtro por tipo de transação",
     description: (
@@ -137,7 +137,7 @@ export const TODO_LIST: ITodoItem[] = [
     links: [
       {
         name: "figma",
-        link: "https://www.figma.com/file/TXxt0VFxbzDoho4tmt9XPP/Teste_FrontWeb?type=design&node-id=5-3396&mode=dev",
+        url: "https://www.figma.com/file/TXxt0VFxbzDoho4tmt9XPP/Teste_FrontWeb?type=design&node-id=5-3396&mode=dev",
       },
     ],
   },

@@ -1,16 +1,53 @@
-import { useState } from "react";
+import { Children, FormEvent, useState } from "react";
 import logoImage from "../../../assets/logo.svg";
 import "./todo.styles.css";
 import { TODO_LIST } from "./todo.constants";
+import { ITodoTask, ITodoTasksStatus } from "./todo.types";
+
+function toggleTaskStatus(status: ITodoTasksStatus): ITodoTasksStatus {
+  return status === "done" ? "pending" : "done";
+}
 
 export function TodoTemplate() {
-  const [items, setItems] = useState(TODO_LIST);
+  const [tasks, setTasks] = useState(TODO_LIST);
 
-  function handleSearch() {}
+  function handleSearch(e: FormEvent<HTMLFormElement>, tasks: ITodoTask[]) {
+    e.preventDefault();
+    const search = (e.target as HTMLFormElement).search.value;
 
-  function handleDeleteTask(itemId: string) {}
+    if (search === "") {
+      setTasks(TODO_LIST);
+      return;
+    }
 
-  function handleChangeTaskStatus(itemId: string, status: string) {}
+
+    setTasks(tasks.filter((task) => {
+      const childrenArray = Children.toArray(task.description.props?.children);
+      const stringChildren = childrenArray?.filter(child => typeof child === "string");
+      return task.title.includes(search) || stringChildren.some((child) => child.includes(search))
+    }))
+
+  }
+
+  function handleDeleteTask(taskId: string) {
+    setTasks((currentTasks) => {
+      return currentTasks.filter((task) => task.id !== taskId);
+    });
+  }
+
+  function handleChangeTaskStatus(TaskId: string) {
+    setTasks((currentTasks) => {
+      return currentTasks.map((task) => {
+        if (task.id === TaskId) {
+          return {
+            ...task,
+            status: toggleTaskStatus(task.status),
+          };
+        }
+        return task;
+      });
+    });
+  }
 
   return (
     <main id="page" className="todo">
@@ -32,35 +69,37 @@ export function TodoTemplate() {
           Items obrigatórios marcados com arteristico (<strong>*</strong>)
         </p>
         <div className="todo__wrapper">
-          <form className="todo__search" onSubmit={handleSearch}>
+          <form className="todo__search" onSubmit={(e) => handleSearch(e, tasks)}>
             <input id="search" placeholder="busca por texto..." />
             <button type="submit">buscar</button>
           </form>
 
           <ul className="todo__list">
-            {items.length === 0 && (
+            {tasks.length === 0 && (
               <span>
                 <strong>Ops!!!</strong> Nenhum resultado foi encontrado
                 &#128533;
               </span>
             )}
-            {items?.map((item, i) => {
+            {tasks?.map((task, i) => {
               return (
-                <li key={item.id}>
+                <li key={task.id}>
                   <span>
                     {i + 1}
-                    {item.required ? "*" : ""}.
+                    {task.required ? "*" : ""}.
                   </span>
                   <div className="todo__content">
                     <h3>
-                      {item.title}
-                      <span data-type={item.status}>{item.status}</span>
+                      {task.title}
+                      <span data-type={task.status} className="button__status">
+                        {task.status}
+                      </span>
                     </h3>
-                    <p>{item.description}</p>
+                    <p>{task.description}</p>
 
-                    {item.links && item.links.length > 0 && (
+                    {task.links && task.links.length > 0 && (
                       <div className="todo__links">
-                        {item?.links?.map((link) => (
+                        {task?.links?.map((link) => (
                           <a key={link.name} target="_blank" href={link.url}>
                             {link.name}
                           </a>
@@ -69,18 +108,18 @@ export function TodoTemplate() {
                     )}
 
                     <div className="todo__actions">
-                      <button onClick={() => handleDeleteTask(item.id)}>
+                      <button onClick={() => handleDeleteTask(task.id)}>
                         delete
                       </button>
 
                       <button
                         onClick={() =>
-                          handleChangeTaskStatus(item.id, item.status)
+                          handleChangeTaskStatus(task.id)
                         }
                       >
                         change to{" "}
                         <strong>
-                          <u>{item.status === "done" ? "pending" : "done"}</u>
+                          <u>{toggleTaskStatus(task.status)}</u>
                         </strong>
                       </button>
                     </div>
