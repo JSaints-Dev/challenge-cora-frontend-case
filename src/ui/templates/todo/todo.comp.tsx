@@ -11,17 +11,17 @@ function toggleTaskStatus(status: ITodoTasksStatus): ITodoTasksStatus {
 export function TodoTemplate() {
   const [tasks, setTasks] = useState(TODO_LIST);
 
-  function handleSearch(e: FormEvent<HTMLFormElement>, tasks: ITodoTask[]) {
+  function handleSearch(e: FormEvent<HTMLFormElement>, todoList: ITodoTask[]) {
     e.preventDefault();
     const search = (e.target as HTMLFormElement).search.value;
 
     if (search === "") {
-      setTasks(TODO_LIST);
+      setTasks(todoList);
       return;
     }
 
 
-    setTasks(tasks.filter((task) => {
+    setTasks(todoList.filter((task) => {
       const childrenArray = Children.toArray(task.description.props?.children);
       const stringChildren = childrenArray?.filter(child => typeof child === "string");
       return task.title.includes(search) || stringChildren.some((child) => child.includes(search))
@@ -69,7 +69,7 @@ export function TodoTemplate() {
           Items obrigatórios marcados com arteristico (<strong>*</strong>)
         </p>
         <div className="todo__wrapper">
-          <form className="todo__search" onSubmit={(e) => handleSearch(e, tasks)}>
+          <form className="todo__search" onSubmit={(e) => handleSearch(e, TODO_LIST)}>
             <input id="search" placeholder="busca por texto..." />
             <button type="submit">buscar</button>
           </form>
