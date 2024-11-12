@@ -82,7 +82,7 @@ export const TODO_LIST: ITodoTask[] = [
     links: [
       {
         name: "endpoint de autenticação",
-        link: "http://localhost:3000/auth",
+        url: "https://github.com/corabank/frontend-case?tab=readme-ov-file#auth",
       },
     ],
   },
@@ -109,7 +109,7 @@ export const TODO_LIST: ITodoTask[] = [
       },
       {
         name: "endpoint de lista",
-        link: "http://localhost:3000/list",
+        url: "https://github.com/corabank/frontend-case?tab=readme-ov-file#list",
       },
     ],
   },
@@ -137,7 +137,7 @@ export const TODO_LIST: ITodoTask[] = [
     links: [
       {
         name: "figma",
-        link: "https://www.figma.com/file/TXxt0VFxbzDoho4tmt9XPP/Teste_FrontWeb?type=design&node-id=5-3396&mode=dev",
+        url: "https://www.figma.com/file/TXxt0VFxbzDoho4tmt9XPP/Teste_FrontWeb?type=design&node-id=5-3396&mode=dev",
       },
     ],
   },

@@ -9,5 +9,5 @@ export type ITodoTask = {
   description: ReactElement;
   status: ITodoTasksStatus;
   required: boolean;
-  links?: { name: string; url?: string, link?: string }[];
+  links?: { name: string; url?: string }[];
 }
