@@ -1,4 +1,4 @@
-import { ITodoTask } from "./todo.types";
+import { ITodoTask } from "./todo-list.types";
 
 export const TODO_LIST: ITodoTask[] = [
   {
