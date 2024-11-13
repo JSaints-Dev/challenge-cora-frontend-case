@@ -7,6 +7,8 @@ import { z } from "zod";
 import { login } from "../../../services";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../router";
+import { FormEvent } from "react";
+import { inputMask } from "../../../utils";
 
 const loginSchema = z.object({
   cpf: z
@@ -17,6 +19,10 @@ const loginSchema = z.object({
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
+
+function classNames(...classes: (string | boolean | undefined)[]): string {
+  return classes.filter(Boolean).join(' ');
+}
 
 export function LoginTemplate() {
   useAuthRedirect();
@@ -38,7 +44,10 @@ export function LoginTemplate() {
 
   async function onSubmit(data: LoginFormValues) {
     try {
-      await login(data);
+      await login({
+        ...data,
+        cpf: data.cpf.replace(/\D/g, ""),
+      });
       reset();
       navigate(routes.IBANKING);
     } catch (error) {
@@ -46,31 +55,42 @@ export function LoginTemplate() {
     }
   }
 
+  function handleCPFInput(event: FormEvent<HTMLInputElement>) {
+    const input = event.currentTarget;
+    input.value = inputMask.cpf(input.value);
+  }
+
   return (
     <main className="login__container">
       <img src={logoFullImage} alt="Cora" title="Cora" />
       <form className="login__form" onSubmit={handleSubmit(onSubmit)}>
         <h1 className="login__title">Fazer Login</h1>
-        <div className="wrapper__login__input">
-          <input
-            id="cpf"
-            className="login__input"
-            placeholder="Insira seu CPF"
-            {...register("cpf")}
-          />
-          {errors.cpf && (
-            <span className="login__error">{errors.cpf.message}</span>
-          )}
-          <input
-            id="password"
-            className="login__input"
-            placeholder="Digite sua senha"
-            type="password"
-            {...register("password")}
-          />
-          {errors.password && (
-            <span className="login__error">{errors.password.message}</span>
-          )}
+        <div className="login__form__container">
+          <div className="login__input__container">
+            <input
+              id="cpf"
+              className={classNames("login__input", errors.cpf && "error")}
+              placeholder="Insira seu CPF"
+              {...register("cpf")}
+              onInput={handleCPFInput}
+            />
+            {errors.cpf && (
+              <span className="login__error">{errors.cpf.message}</span>
+            )}
+          </div>
+
+          <div className="login__input__container">
+            <input
+              id="password"
+              className={classNames("login__input", errors.password && "error")}
+              placeholder="Digite sua senha"
+              type="password"
+              {...register("password")}
+            />
+            {errors.password && (
+              <span className="login__error">{errors.password.message}</span>
+            )}
+          </div>
         </div>
         <button className="login__button">
           Continuar
