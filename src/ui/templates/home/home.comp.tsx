@@ -1,35 +1,42 @@
 import { Link } from "react-router-dom";
 import { routes } from "../../../router/routes";
 import logoImage from "../../../assets/logo.svg";
+import { PageContainer } from "../../shared";
+import "./home.styles.css";
 
 export function HomeTemplate() {
   return (
-    <main id="page">
-      <div>
-        <img src={logoImage} alt="Cora" title="Cora"></img>
-        <h1>Hey There &#128075;</h1>
-        <h2>Tenha um ótimo teste!!!</h2>
-        <p>
-          <strong>Vamos começar?</strong> Como você faria os botões abaixo
-          abrirem as suas respectivas páginas? (Comece pela{" "}
-          <strong>TODO LIST</strong>, pois nela contem os próximos passos)
-        </p>
-        <p className="disclaimer">
-          &#9888; Você pode encontrar alguns <strong>erros</strong> no meio do
-          caminho, não desanime e fique atento para conseguir{" "}
-          <strong>visualizar</strong> e <strong>renderizar</strong> as páginas.
-        </p>
+    <PageContainer.Root>
+      <PageContainer.Logo src={logoImage} alt="Cora" title="Cora" />
+      <PageContainer.Title>Hey There &#128075;</PageContainer.Title>
+      <PageContainer.Subtitle>Tenha um ótimo teste!!!</PageContainer.Subtitle>
+      <PageContainer.Description>
+        <strong>Vamos começar?</strong> Como você faria os botões abaixo abrirem
+        as suas respectivas páginas? (Comece pela <strong>TODO LIST</strong>,
+        pois nela contem os próximos passos)
+      </PageContainer.Description>
 
-        <ul className="buttons">
+      <PageContainer.Disclaimer>
+        &#9888; Você pode encontrar alguns <strong>erros</strong> no meio do
+        caminho, não desanime e fique atento para conseguir{" "}
+        <strong>visualizar</strong> e <strong>renderizar</strong> as páginas.
+      </PageContainer.Disclaimer>
+
+      <PageContainer.Content>
+        <ul className="nav__container">
           <li>
-            <Link to={routes.TODO}>TO-DO LIST</Link>
+            <Link className="link" to={routes.TODO}>
+              TO-DO LIST
+            </Link>
           </li>
 
           <li>
-            <Link to={routes.IBANKING}>IBANKING</Link>
+            <Link className="link" to={routes.IBANKING}>
+              IBANKING
+            </Link>
           </li>
         </ul>
-      </div>
-    </main>
-  )
+      </PageContainer.Content>
+    </PageContainer.Root>
+  );
 }

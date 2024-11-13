@@ -3,6 +3,7 @@ import logoImage from "../../../assets/logo.svg";
 import "./todo.styles.css";
 import { TODO_LIST } from "./todo.constants";
 import { ITodoTask, ITodoTasksStatus } from "./todo.types";
+import { PageContainer } from "../../shared";
 
 function toggleTaskStatus(status: ITodoTasksStatus): ITodoTasksStatus {
   return status === "done" ? "pending" : "done";
@@ -20,13 +21,20 @@ export function TodoTemplate() {
       return;
     }
 
-
-    setTasks(todoList.filter((task) => {
-      const childrenArray = Children.toArray(task.description.props?.children);
-      const stringChildren = childrenArray?.filter(child => typeof child === "string");
-      return task.title.includes(search) || stringChildren.some((child) => child.includes(search))
-    }))
-
+    setTasks(
+      todoList.filter((task) => {
+        const childrenArray = Children.toArray(
+          task.description.props?.children
+        );
+        const stringChildren = childrenArray?.filter(
+          (child) => typeof child === "string"
+        );
+        return (
+          task.title.includes(search) ||
+          stringChildren.some((child) => child.includes(search))
+        );
+      })
+    );
   }
 
   function handleDeleteTask(taskId: string) {
@@ -50,26 +58,29 @@ export function TodoTemplate() {
   }
 
   return (
-    <main id="page" className="todo">
-      <div>
-        <img src={logoImage} alt="Cora" title="Cora"></img>
-        <h1>Weekly to-do list &#128467;</h1>
-        <h2>
-          Bem-vindo ao nosso produto <i>fake</i> de <strong>to-do</strong> list
-        </h2>
-        <p>
-          Marque como{" "}
-          <strong>
-            <u>done</u>
-          </strong>{" "}
-          as tasks que você conseguir concluir (elas já precisam renderizar com
-          o status <strong>done</strong>)
-        </p>
-        <p className="disclaimer">
-          Items obrigatórios marcados com arteristico (<strong>*</strong>)
-        </p>
+    <PageContainer.Root>
+      <PageContainer.Logo src={logoImage} alt="Cora" title="Cora" />
+      <PageContainer.Title>Weekly to-do list &#128467;</PageContainer.Title>
+      <PageContainer.Subtitle>
+        Bem-vindo ao nosso produto <i>fake</i> de <strong>to-do</strong> list
+      </PageContainer.Subtitle>
+      <PageContainer.Description>
+        Marque como{" "}
+        <strong>
+          <u>done</u>
+        </strong>{" "}
+        as tasks que você conseguir concluir (elas já precisam renderizar com o
+        status <strong>done</strong>)
+      </PageContainer.Description>
+      <PageContainer.Disclaimer>
+        Items obrigatórios marcados com arteristico (<strong>*</strong>)
+      </PageContainer.Disclaimer>
+      <PageContainer.Content>
         <div className="todo__wrapper">
-          <form className="todo__search" onSubmit={(e) => handleSearch(e, TODO_LIST)}>
+          <form
+            className="todo__search"
+            onSubmit={(e) => handleSearch(e, TODO_LIST)}
+          >
             <input id="search" placeholder="busca por texto..." />
             <button type="submit">buscar</button>
           </form>
@@ -112,11 +123,7 @@ export function TodoTemplate() {
                         delete
                       </button>
 
-                      <button
-                        onClick={() =>
-                          handleChangeTaskStatus(task.id)
-                        }
-                      >
+                      <button onClick={() => handleChangeTaskStatus(task.id)}>
                         change to{" "}
                         <strong>
                           <u>{toggleTaskStatus(task.status)}</u>
@@ -129,7 +136,7 @@ export function TodoTemplate() {
             })}
           </ul>
         </div>
-      </div>
-    </main>
+      </PageContainer.Content>
+    </PageContainer.Root>
   );
 }
