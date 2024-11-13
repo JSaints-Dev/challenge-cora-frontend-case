@@ -8,9 +8,10 @@ import { routes } from "../../../router";
 import { FormEvent } from "react";
 import { inputMask } from "../../../utils";
 import { Input } from "../../shared";
-import "./login.styles.css";
 import { validations } from "./login.validations";
 import { LoginFormValues } from "./login.types";
+import "./login.styles.css";
+import toast from "react-hot-toast";
 
 export function LoginTemplate() {
   useAuthRedirect();
@@ -39,6 +40,7 @@ export function LoginTemplate() {
       reset();
       navigate(routes.IBANKING);
     } catch (error) {
+      toast.error("CPF ou senha inválidos");
       console.error("Login failed", error);
     }
   }
@@ -51,7 +53,10 @@ export function LoginTemplate() {
   return (
     <main className="login__container">
       <img src={logoFullImage} alt="Cora" title="Cora" />
-      <form className="login__form__container" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="login__form__container"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <h1 className="login__title">Fazer Login</h1>
         <div className="login__inputs__container">
           <Input

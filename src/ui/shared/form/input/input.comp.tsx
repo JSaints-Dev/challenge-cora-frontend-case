@@ -1,11 +1,7 @@
-import { ComponentProps, forwardRef } from "react";
+import { forwardRef } from "react";
 import { classNames } from "../../../../resources";
+import { InputProps } from "./input.types";
 import './input.styles.css';
-
-type InputProps = {
-  label?: string;
-  error?: string;
-} & ComponentProps<"input">;
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, error, name, id,...props }, ref) => {

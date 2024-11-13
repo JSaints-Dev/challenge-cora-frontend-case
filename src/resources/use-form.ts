@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback, useMemo, FormEvent } from 'react';
+import { useRef, useState, useEffect, useCallback, useMemo, FormEvent, createRef } from 'react';
 import { ZodSchema } from 'zod';
 
 type FieldError = {
@@ -42,7 +42,7 @@ export function useForm<T extends Record<string, unknown>>(defaultValues?: Parti
 
   const register = useCallback((name: keyof T) => {
     if (!refs.current[name]) {
-      refs.current[name] = React.createRef();
+      refs.current[name] = createRef();
     }
     return {
       ref: refs.current[name],
