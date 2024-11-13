@@ -1,0 +1,21 @@
+.todo__search {
+  display: flex;
+}
+
+.todo__search__input {
+  width: 100%;
+  font-size: 1.6em;
+  padding: 15px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid var(--color-light-gray);
+}
+
+.todo__search__button {
+  padding: 15px;
+  font-size: 1.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 0 5px 5px 0;
+  background-color: var(--color-light-gray);
+  cursor: pointer;
+}
