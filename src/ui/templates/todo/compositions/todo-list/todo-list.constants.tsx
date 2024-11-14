@@ -77,7 +77,7 @@ export const TODO_LIST: ITodoTask[] = [
         <strong>Info:</strong> Sinta-se livre para fazer melhorias :)
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
     links: [
       {
