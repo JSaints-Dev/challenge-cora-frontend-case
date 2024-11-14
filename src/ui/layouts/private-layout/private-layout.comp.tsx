@@ -1,9 +1,9 @@
-import { Button } from '../../shared';
 import './private-layout.styles.css'
 import logoFullImage from '../../../assets/logo-full.svg';
 import { removeToken } from '../../../services';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '../../../router';
+import { Button } from '@jsaints-dev/cora-ui';
 
 export type PrivateLayoutProps = {
   children: React.ReactNode;
@@ -28,7 +28,7 @@ export function PrivateLayout({children}: PrivateLayoutProps) {
           <div className="menu__container__logo" onClick={handleNavigateToHome}>
             <img src={logoFullImage} alt="Cora" title="Cora" />
           </div>
-          <Button onClick={handleLogout} variant='outline__white'>Sair</Button>
+          <Button onClick={handleLogout} variant='cora-outline' className='font-bold'>Logout</Button>
         </div>
       </div>
       {children}

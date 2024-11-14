@@ -7,7 +7,7 @@
 .menu__container {
   display: flex;
   width: 100%;
-  background-color: var(--color-main);
+  background-color: var(--custom-color-dark-main);
   height: 60px;
   justify-content: center;
 }

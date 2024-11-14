@@ -40,21 +40,21 @@
 
 .text__header {
   font-size: .75rem;
-  color: var(--color-black);
+  color: var(--custom-color-black);
 }
 
 .text__table__body {
   font-size: 1rem;
   width: 100%;
-  color: var(--text-default);
+  color: var(--custom-text-default);
 }
 
 .text__table__body.DEBIT {
-  color: var(--text-black);
+  color: var(--custom-text-black);
 }
 
 .text__table__body.CREDIT {
-  color: var(--text-accent);
+  color: var(--custom-text-accent);
 }
 
 .ellipsis {
@@ -70,7 +70,7 @@
   gap: 1rem;
   position: sticky;
   top: 0;
-  background-color: var(--color-white);
+  background-color: var(var(--custom-color-white));
   z-index: 1;
 }
 .transactions__container__empty {
@@ -81,10 +81,10 @@
   margin: 0 auto;
   padding: 2rem;
   border-radius: .5rem;
-  border: 1px solid var(--color-light-gray);
+  border: 1px solid var(--custom-color-light-gray);
 }
 
 .text__empty {
   font-size: 1.125rem;
-  color: var(--color-gray);
+  color: var(--custom-color-gray);
 }

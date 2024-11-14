@@ -2,7 +2,7 @@
   width: 100%;
   list-style: none;
   border-radius: 5px;
-  border: 1px solid var(--color-light-gray);
+  border: 1px solid var(--custom-color-light-gray);
   background-color: rgba(0, 0, 0, 0.01);
 }
 
@@ -14,7 +14,7 @@
 }
 
 .todo__item__container:not(:last-child) {
-  border-bottom: 1px solid var(--color-light-gray);
+  border-bottom: 1px solid var(--custom-color-light-gray);
 }
 
 .todo__item__title {
@@ -48,19 +48,19 @@
 }
 
 .todo__item__status.pending {
-  color: var(--color-error);
-  border-color: var(--color-error);
+  color: var(--custom-color-error);
+  border-color: var(--custom-color-error);
 }
 
 .todo__item__status.done {
-  color: var(--color-success);
-  border-color: var(--color-success);
+  color: var(--custom-color-success);
+  border-color: var(--custom-color-success);
 }
 
 .todo__item__description {
   font-size: 1rem;
   line-height: 1.3em;
-  color: var(--color-gray);
+  color: var(--custom-color-gray);
 }
 
 .todo__item__links__container {
@@ -86,8 +86,8 @@
   border-radius: 5px;
   cursor: pointer;
   text-transform: uppercase;
-  color: var(--color-main);
-  border: 1px solid var(--color-main);
+  color: var(--custom-color-dark-main);
+  border: 1px solid var(--custom-color-dark-main);
   background-color: transparent;
 }
 
@@ -95,6 +95,6 @@
   display: block;
   font-size: 1rem;
   padding: 15px;
-  color: var(--color-gray);
+  color: var(--custom-color-gray);
   text-align: center;
 }

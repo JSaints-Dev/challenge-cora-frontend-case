@@ -1,22 +1,22 @@
 :root {
-  --color-main: #fe3e6d;
-  --color-dark-main: #d4265a;
-  --color-white: #ffffff;
-  --color-gray: #6b7076;
-  --color-light-gray: #dfdfdf;
-  --color-lighter-gray: #f0f4f8;
-  --color-error: #ee3636;
-  --color-success: #04aa6d;
-  --color-black: #3B3B3B;
-  --text-black: var(--color-black);
-  --text-default: var(--color-gray);
-  --text-accent: #1A93DA;
+  --custom-color-main: hsl(342, 99%, 71%);
+  --custom-color-dark-main: hsl(342, 69%, 49%);
+  --custom-color-white: hsl(0, 0%, 100%);
+  --custom-color-gray: hsl(210, 5%, 44%);
+  --custom-color-light-gray: hsl(0, 0%, 87%);
+  --custom-color-lighter-gray: hsl(210, 33%, 95%);
+  --custom-color-error: hsl(0, 85%, 58%);
+  --custom-color-success: hsl(156, 96%, 34%);
+  --custom-color-black: hsl(0, 0%, 23%);
+  --custom-text-accent: hsl(204, 83%, 47%);
+  --custom-text-black: var(--custom-color-black);
+  --custom-text-default: var(--custom-color-gray);
 
-  --font-family: "Roboto", sans-serif;
+  --custom-font-family: "Roboto", sans-serif;
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--custom-font-family);
 }
 
 .bold {
@@ -56,11 +56,11 @@ body {
 }
 
 .color__black {
-  color: var(--text-black);
+  color: var(--custom-text-black);
 }
 
 .color__default {
-  color: var(--text-default);
+  color: var(--custom-text-default);
 }
 
 .text__decoration__line__through {

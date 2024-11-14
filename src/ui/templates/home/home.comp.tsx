@@ -3,6 +3,7 @@ import { routes } from "../../../router/routes";
 import logoImage from "../../../assets/logo.svg";
 import { PageContainer } from "../../shared";
 import "./home.styles.css";
+import { Button } from "@jsaints-dev/cora-ui";
 
 export function HomeTemplate() {
   return (
@@ -26,13 +27,15 @@ export function HomeTemplate() {
         <ul className="nav__container">
           <li>
             <Link className="link" to={routes.TODO}>
-              TO-DO LIST
+              <Button variant="cora-outline">
+                TO-DO LIST
+              </Button>
             </Link>
           </li>
 
           <li>
             <Link className="link" to={routes.IBANKING}>
-              IBANKING
+              <Button variant="cora-outline">IBANKING</Button>
             </Link>
           </li>
         </ul>

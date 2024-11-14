@@ -6,6 +6,6 @@
   text-align: center;
   font-size: 1.125rem;
   line-height: 1.4em;
-  color: var(--color-gray);
+  color: var(--custom-color-gray);
   margin: 15px auto;
 }
