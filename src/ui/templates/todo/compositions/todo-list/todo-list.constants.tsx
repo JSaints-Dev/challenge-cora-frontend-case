@@ -132,7 +132,7 @@ export const TODO_LIST: ITodoTask[] = [
         <strong>CREDIT</strong>, dentro do response retornado pela api.
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
     links: [
       {
@@ -167,7 +167,7 @@ export const TODO_LIST: ITodoTask[] = [
         ObrigadaUm &#128640;
       </>
     ),
-    status: "pending",
+    status: "done",
     required: false,
   },
 ];
