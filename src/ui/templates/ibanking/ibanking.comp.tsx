@@ -11,7 +11,7 @@ import { TransactionsTable } from "./compositions/transactions-table";
 import { classNames } from "../../../resources";
 import debitIcon from "../../../assets/debit.svg";
 import creditIcon from "../../../assets/credit.svg";
-
+import { ITransactionsFilter, ITransactionsFiltered } from "./ibanking.types";
 import "./ibanking.styles.css";
 
 function handleFormatCurrency(
@@ -21,13 +21,6 @@ function handleFormatCurrency(
   const _value = formatCurrency(value);
   return entry === "CREDIT" ? `+ ${_value}` : _value;
 }
-
-type ITransactionsFilter = "ALL" | IListItem["entry"];
-
-type ITransactionsFiltered = {
-  filter: ITransactionsFilter;
-  transactions: IListResponse;
-};
 
 function handleSortTransactions(transactions: IListResponse | undefined) {
   return transactions?.results
@@ -76,7 +69,6 @@ export function IBankingTemplate() {
     }
 
     if (entry === "CREDIT" && transactions) {
-      console.log("transactions", transactions);
       const filtered = transactions.results.reduce<IListResponse["results"]>(
         (acc, item) => {
           const filteredItems = item.items.filter(
@@ -87,8 +79,6 @@ export function IBankingTemplate() {
         },
         []
       );
-
-      console.log("filtered", filtered);
 
       setFilteredTransactions({
         filter: "CREDIT",
