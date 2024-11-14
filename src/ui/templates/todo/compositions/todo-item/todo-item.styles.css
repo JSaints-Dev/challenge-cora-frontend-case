@@ -18,7 +18,7 @@
 }
 
 .todo__item__title {
-  font-size: 2em;
+  font-size: 1.125rem;
   line-height: 1em;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .todo__item__description {
-  font-size: 1.6em;
+  font-size: 1rem;
   line-height: 1.3em;
   color: var(--color-gray);
 }
@@ -70,7 +70,7 @@
 
 .todo__item_link {
   display: inline-block;
-  font-size: 1.4em;
+  font-size: .875em;
   padding-right: 7px;
 }
 
@@ -81,7 +81,7 @@
 
 .todo__item__action {
   display: inline-block;
-  font-size: 1.1em;
+  font-size: .75rem;
   padding: 7px;
   border-radius: 5px;
   cursor: pointer;
@@ -93,7 +93,8 @@
 
 .todo__list__empty {
   display: block;
-  font-size: 1.6em;
+  font-size: 1rem;
   padding: 15px;
   color: var(--color-gray);
+  text-align: center;
 }

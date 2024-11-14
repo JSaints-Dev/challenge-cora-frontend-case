@@ -3,12 +3,13 @@
   flex-direction: column;
   gap: 10px;
   list-style: none;
+  align-items: center;
 }
 
 .link {
   display: inline-block;
   padding: 10px;
-  font-size: 1.4em;
+  font-size: .875rem;
   text-decoration: none;
   border-radius: 5px;
   min-width: 200px;

@@ -31,7 +31,7 @@ export function TodoList() {
         );
         return (
           item.title.includes(search) ||
-          stringChildren.some((child) => child.includes(search))
+          stringChildren.some((child) => typeof child === 'string' && child.includes(search))
         );
       })
     );

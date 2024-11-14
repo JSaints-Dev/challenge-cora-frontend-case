@@ -2,7 +2,7 @@ import logoFullImage from "../../../assets/logo-full.svg";
 import arrowRightImage from "../../../assets/arrow-right.svg";
 import { useAuthRedirect } from "../../../hooks";
 import { useForm } from "../../../resources";
-import { login } from "../../../services";
+import { loginService } from "../../../services";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../router";
 import { FormEvent } from "react";
@@ -32,16 +32,18 @@ export function LoginTemplate() {
   );
 
   async function onSubmit(data: LoginFormValues) {
-    try {
-      await login({
-        ...data,
-        cpf: data.cpf.replace(/\D/g, ""),
-      });
+    const response = await loginService({
+      ...data,
+      cpf: data.cpf.replace(/\D/g, ""),
+    });
+
+    if (response.status && response.data) {
       reset();
       navigate(routes.IBANKING);
-    } catch (error) {
+    }
+
+    if (!response.status) {
       toast.error("CPF ou senha inválidos");
-      console.error("Login failed", error);
     }
   }
 
