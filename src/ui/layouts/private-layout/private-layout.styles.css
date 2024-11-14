@@ -23,4 +23,5 @@
 
 .menu__container__logo {
   width: 100px;
+  cursor: pointer;
 }
