@@ -4,6 +4,7 @@ import { TODO_LIST } from "./todo-list.constants";
 import { InputSearch } from "../../../../shared";
 import { TodoItem, TodoItemProvider } from "../todo-item";
 import "./todo-list.styles.css";
+import { Button } from "@jsaints-dev/cora-ui";
 
 function getItemIndex(index: number, required: boolean): string {
   return `${index + 1}${required ? "*" : ""}.`;
@@ -31,7 +32,9 @@ export function TodoList() {
         );
         return (
           item.title.includes(search) ||
-          stringChildren.some((child) => typeof child === 'string' && child.includes(search))
+          stringChildren.some(
+            (child) => typeof child === "string" && child.includes(search)
+          )
         );
       })
     );
@@ -87,9 +90,13 @@ export function TodoList() {
                     </TodoItem.LinksContainer>
                   )}
                   <TodoItem.ActionsContainer>
-                    <TodoItem.Action onClick={() => handleDeleteItem(item.id)}>
-                      delete
-                    </TodoItem.Action>
+                    <Button
+                      variant="cora-outline"
+                      className="h-7 text-xs"
+                      onClick={() => handleDeleteItem(item.id)}
+                    >
+                      DELETE
+                    </Button>
                     <TodoItem.ActionChangeStatus />
                   </TodoItem.ActionsContainer>
                 </TodoItem.Content>

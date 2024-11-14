@@ -28,7 +28,7 @@ export function PrivateLayout({children}: PrivateLayoutProps) {
           <div className="menu__container__logo" onClick={handleNavigateToHome}>
             <img src={logoFullImage} alt="Cora" title="Cora" />
           </div>
-          <Button onClick={handleLogout} variant='cora-outline' className='font-bold'>Logout</Button>
+          <Button onClick={handleLogout} variant='cora-outline'>Logout</Button>
         </div>
       </div>
       {children}

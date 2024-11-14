@@ -27,7 +27,7 @@ export function HomeTemplate() {
         <ul className="nav__container">
           <li>
             <Link className="link" to={routes.TODO}>
-              <Button variant="cora-outline">
+              <Button variant="cora-outline" className="w-52">
                 TO-DO LIST
               </Button>
             </Link>
@@ -35,7 +35,7 @@ export function HomeTemplate() {
 
           <li>
             <Link className="link" to={routes.IBANKING}>
-              <Button variant="cora-outline">IBANKING</Button>
+              <Button variant="cora-outline" className="w-52">IBANKING</Button>
             </Link>
           </li>
         </ul>

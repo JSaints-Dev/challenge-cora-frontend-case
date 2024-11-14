@@ -16,6 +16,7 @@ import {
 import "./todo-item.styles.css";
 import { classNames } from "../../../../../resources";
 import { useTodoItem } from "./use-todo-item";
+import { Button } from "@jsaints-dev/cora-ui";
 
 export function TodoItemRoot({ children }: ITodoItemRootProps) {
   return <ul className="todo__list">{children}</ul>;
@@ -135,11 +136,11 @@ export function TodoItemActionChangeStatus({
 }: Omit<ITodoItemActionProps, "onClick" | "children">) {
   const { handleChangeStatus, toggleItemStatus, item } = useTodoItem();
   return (
-    <TodoItemAction {...props} onClick={handleChangeStatus}>
-      change to{" "}
+    <Button variant="cora-outline" className="h-7 text-xs" {...props} onClick={handleChangeStatus}>
+      CHANGE TO{" "}
       <strong>
-        <u>{toggleItemStatus(item.status)}</u>
+        <u>{toggleItemStatus(item.status).toLocaleUpperCase()}</u>
       </strong>
-    </TodoItemAction>
+    </Button>
   );
 }
