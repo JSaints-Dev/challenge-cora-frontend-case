@@ -11,6 +11,7 @@
   --custom-text-accent: hsl(204, 83%, 47%);
   --custom-text-black: var(--custom-color-black);
   --custom-text-default: var(--custom-color-gray);
+  --custom-link-color: hsl(210, 100%, 50%);
 
   --custom-font-family: "Roboto", sans-serif;
 }

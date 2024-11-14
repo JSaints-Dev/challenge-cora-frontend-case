@@ -72,6 +72,8 @@
   display: inline-block;
   font-size: .875em;
   padding-right: 7px;
+  color: var(--custom-link-color);
+  text-decoration: underline;
 }
 
 .todo__item__actions__container {

@@ -170,4 +170,33 @@ export const TODO_LIST: ITodoTask[] = [
     status: "done",
     required: false,
   },
+{
+  id: "be4f2532-aca4-46c8-8423455adsfb8-c9fe41d7fb7f",
+  ref: "1",
+  title: "Desing System",
+  description: (
+    <>
+      <strong>Observação:</strong> Observei que no requisito da vaga, tinha um
+      diferencial caso o candidato tivesse experiência com Desing System, então
+      decidi desenvolver um DS simples, (O Setup para build e para desenvolvimento
+      demorou mais que o esperado, logo não deu para fazer mais componentes rsrsrs).
+      <br />
+      <br />
+      O DS está configurado no NPM, com versionamento e estrutura para produção,
+      tem uma action do GitHub para fazer a publicação no NPM.
+    </>
+  ),
+  status: "done",
+  required: false,
+  links: [
+    {
+      name: "NPM",
+      url: "https://www.npmjs.com/package/@jsaints-dev/cora-ui",
+    },
+    {
+      name: "GitHub",
+      url: "https://github.com/JSaints-Dev/cora-ui",
+    },
+  ]
+},
 ];

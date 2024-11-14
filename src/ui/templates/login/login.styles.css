@@ -4,14 +4,14 @@
   margin: 0 auto;
   padding: 97px 87px 87px;
   border-radius: 0 0 16px 16px;
-  background-color: var(--custom-dark-main);
+  background-color: var(--custom-color-dark-main);
 }
 
 .login__title {
   font-size: 28px;
   line-height: 38px;
   font-weight: normal;
-  color: var(var(--custom-color-white));
+  color: var(--custom-color-white);
   margin-top: 84px;
 }
 
@@ -23,9 +23,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--custom-dark-main);
+  color: var(--custom-color-dark-main);
   line-height: 24px;
-  font-weight: 700;
+  background-color: var(--custom-color-white);
 }
 
 .login__inputs__container {
