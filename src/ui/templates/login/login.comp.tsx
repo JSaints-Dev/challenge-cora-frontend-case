@@ -54,7 +54,9 @@ export function LoginTemplate() {
 
   return (
     <main className="login__container">
-      <img src={logoFullImage} alt="Cora" title="Cora" />
+      <div className="login__container__logo">
+        <img src={logoFullImage} alt="Cora" title="Cora" />
+      </div>
       <form
         className="login__form__container"
         onSubmit={handleSubmit(onSubmit)}

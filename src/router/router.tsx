@@ -5,6 +5,7 @@ import TodoPage from "../pages/todo/todo.page";
 import LoginPage from "../pages/login/login.page";
 import IBankingPage from "../pages/ibanking/ibanking.page";
 import { PrivateRoute } from "./private-route";
+import { PrivateLayout } from "../ui/layouts";
 
 export const router = createBrowserRouter([
   {
@@ -25,8 +26,12 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <IBankingPage />,
-      }
-    ]
-  }
-])
+        element: (
+          <PrivateLayout>
+            <IBankingPage />
+          </PrivateLayout>
+        ),
+      },
+    ],
+  },
+]);

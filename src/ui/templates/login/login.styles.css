@@ -39,3 +39,7 @@
   flex-direction: column;
   gap: 48px;
 }
+
+.login__container__logo {
+  width: 160px;
+}
