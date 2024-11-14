@@ -1,8 +1,8 @@
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 export function formatDate(dateString: string): string {
-  const date = new Date(dateString);
+  const date = parseISO(dateString);
   return format(date, "dd 'de' MMMM", { locale: ptBR });
 }
 

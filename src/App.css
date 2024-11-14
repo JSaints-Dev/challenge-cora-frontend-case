@@ -7,10 +7,61 @@
   --color-lighter-gray: #f0f4f8;
   --color-error: #ee3636;
   --color-success: #04aa6d;
+  --text-black: #3B3B3B;
+  --text-default: var(--color-gray);
+  --text-accent: #1A93DA;
 
   --font-family: "Roboto", sans-serif;
 }
 
 body {
   font-family: var(--font-family);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.text__align__right {
+  text-align: right;
+}
+
+.text__align__center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex__column {
+  flex-direction: column;
+}
+
+.align__center {
+  align-items: center;
+}
+
+.align__end {
+  align-items: flex-end;
+}
+
+.justify__center {
+  justify-content: center;
+}
+
+.justify__space__between {
+  justify-content: space-between;
+}
+
+.color__black {
+  color: var(--text-black);
+}
+
+.color__default {
+  color: var(--text-default);
+}
+
+.text__decoration__line__through {
+  text-decoration: line-through;
 }

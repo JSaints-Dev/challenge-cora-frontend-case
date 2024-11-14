@@ -3,6 +3,16 @@
     {
       "items": [
         {
+          "id": "abc123def456ghi7812349",
+          "description": "Compra de produtos eletrônicos",
+          "label": "Compra aprovada",
+          "entry": "CREDIT",
+          "amount": 250000,
+          "name": "João da Silva Carlos Nobrega da Silva",
+          "dateEvent": "2024-02-01T09:15:17Z",
+          "status": "COMPLETED"
+        },
+        {
           "id": "abc123def456ghi789",
           "description": "Compra de produtos eletrônicos",
           "label": "Compra aprovada",
@@ -13,7 +23,8 @@
           "status": "COMPLETED"
         }
       ],
-      "date": "2024-02-01"
+      "date": "2024-02-01",
+      "currentBalance": 103510
     },
     {
       "items": [
@@ -28,7 +39,8 @@
           "status": "COMPLETED"
         }
       ],
-      "date": "2024-01-11"
+      "date": "2024-01-11",
+      "currentBalance": 3510
     },
     {
       "items": [
@@ -43,7 +55,8 @@
           "status": "COMPLETED"
         }
       ],
-      "date": "2023-12-11"
+      "date": "2023-12-11",
+      "currentBalance": 6500
     },
     {
       "items": [
@@ -58,7 +71,8 @@
           "status": "COMPLETED"
         }
       ],
-      "date": "2023-10-15"
+      "date": "2023-10-15",
+      "currentBalance": 2000
     }
   ],
   "itemsTotal": 4

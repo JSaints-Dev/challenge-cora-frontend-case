@@ -1,0 +1,54 @@
+.transactions__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1032px;
+  min-width: 608px;
+  flex: 1;
+  gap: .5rem;
+  margin: auto;
+}
+
+.transactions__header__day__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.transactions__card {
+  display: flex;
+  border: 1px solid #DEE4E9;
+  padding: 2rem 1rem;
+  border-radius: 16px;
+}
+
+.transactions__line {
+  border-right: 1px solid #DEE4E9;
+  height: 16px;
+  width: 33px;
+}
+
+.text__header {
+  font-size: .75rem;
+  color: var(--color-black);
+}
+
+.text__table__body {
+  font-size: 1rem;
+  width: 100%;
+  color: var(--text-default);
+}
+
+.text__table__body.DEBIT {
+  color: var(--text-black);
+}
+
+.text__table__body.CREDIT {
+  color: var(--text-accent);
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 90%;
+}
