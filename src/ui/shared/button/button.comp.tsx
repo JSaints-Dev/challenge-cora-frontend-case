@@ -15,11 +15,16 @@ export type ButtonProps = {
 export function Button({
   variant = "primary",
   children,
+  className,
   ...props
 }: ButtonProps) {
   return (
     <button
-      className={classNames("button__comp", `button__comp__${variant}`)}
+      className={classNames(
+        "button__comp",
+        `button__comp__${variant}`,
+        className,
+      )}
       {...props}
     >
       {children}

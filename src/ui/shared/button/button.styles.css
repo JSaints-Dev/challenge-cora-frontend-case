@@ -63,3 +63,7 @@
   background-color: var(--color-primary);
   color: var(--color-white);
 }
+
+.rounded__full {
+  border-radius: 9999px;
+}

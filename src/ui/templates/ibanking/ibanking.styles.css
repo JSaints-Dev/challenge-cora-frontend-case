@@ -1,4 +1,4 @@
-.transactions__container {
+.transactions__container__list__container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -7,6 +7,17 @@
   flex: 1;
   gap: .5rem;
   margin: auto;
+}
+
+.transactions__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1032px;
+  min-width: 608px;
+  gap: 2rem;
+  margin: auto;
+  flex: 1;
 }
 
 .transactions__header__day__container {
@@ -51,4 +62,14 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 90%;
+}
+
+.transactions__container__filter__transaction {
+  padding: .5rem 0 1rem;
+  display: flex;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  background-color: var(--color-white);
+  z-index: 1;
 }
