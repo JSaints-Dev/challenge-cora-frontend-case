@@ -1,26 +1,33 @@
-import { api, apiPaths } from "./api";
+import { ApiService } from "./api.service";
 import { setToken } from "./token.service";
+import { ApiResponse } from "./api.utils";
 
-type LoginResponse = {
+export type ILoginResponse = {
   token: string;
 };
 
-export const login = async ({
-  cpf,
-  password,
-}: {
+export type ILoginParams = {
   cpf: string;
   password: string;
-}): Promise<void> => {
-  try {
-    const response = await api.post<LoginResponse>(apiPaths.AUTH, {
+};
+
+const apiService = new ApiService(import.meta.env.VITE_API_URL);
+
+export const loginService = async ({
+  cpf,
+  password,
+}: ILoginParams): Promise<ApiResponse<ILoginResponse>> => {
+  const response = await apiService.post<ILoginResponse, ILoginParams>(
+    "/auth",
+    {
       cpf,
       password,
-    });
-    const { token } = response.data;
-    setToken(token);
-  } catch (error) {
-    console.error("Login failed", error);
-    throw error;
+    }
+  );
+
+  if (response.status && response.data) {
+    setToken(response.data.token);
   }
+
+  return response;
 };
