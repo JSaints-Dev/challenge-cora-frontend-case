@@ -1,58 +1,45 @@
 import { Children, FormEvent, useState } from "react";
-import { ITodoTask, ITodoTasksStatus } from "./todo-list.types";
+import { ITodoTask } from "./todo-list.types";
 import { TODO_LIST } from "./todo-list.constants";
-import './todo-list.styles.css';
 import { InputSearch } from "../../../../shared";
+import { TodoItem, TodoItemProvider } from "../todo-item";
+import "./todo-list.styles.css";
 
-function toggleTaskStatus(status: ITodoTasksStatus): ITodoTasksStatus {
-  return status === "done" ? "pending" : "done";
+function getItemIndex(index: number, required: boolean): string {
+  return `${index + 1}${required ? "*" : ""}.`;
 }
 
 export function TodoList() {
-  const [tasks, setTasks] = useState(TODO_LIST);
+  const [items, setItems] = useState(TODO_LIST);
 
   function handleSearch(e: FormEvent<HTMLFormElement>, todoList: ITodoTask[]) {
     e.preventDefault();
     const search = (e.target as HTMLFormElement).search.value;
 
     if (search === "") {
-      setTasks(todoList);
+      setItems(todoList);
       return;
     }
 
-    setTasks(
-      todoList.filter((task) => {
+    setItems(
+      todoList.filter((item) => {
         const childrenArray = Children.toArray(
-          task.description.props?.children
+          item.description.props?.children
         );
         const stringChildren = childrenArray?.filter(
           (child) => typeof child === "string"
         );
         return (
-          task.title.includes(search) ||
+          item.title.includes(search) ||
           stringChildren.some((child) => child.includes(search))
         );
       })
     );
   }
 
-  function handleDeleteTask(taskId: string) {
-    setTasks((currentTasks) => {
-      return currentTasks.filter((task) => task.id !== taskId);
-    });
-  }
-
-  function handleChangeTaskStatus(TaskId: string) {
-    setTasks((currentTasks) => {
-      return currentTasks.map((task) => {
-        if (task.id === TaskId) {
-          return {
-            ...task,
-            status: toggleTaskStatus(task.status),
-          };
-        }
-        return task;
-      });
+  function handleDeleteItem(itemId: string) {
+    setItems((currentItem) => {
+      return currentItem.filter((item) => item.id !== itemId);
     });
   }
 
@@ -65,55 +52,52 @@ export function TodoList() {
         name="search"
       />
 
-      <ul className="todo__list">
-        {tasks.length === 0 && (
-          <span>
+      <TodoItem.Root>
+        {items.length === 0 && (
+          <TodoItem.Empty>
             <strong>Ops!!!</strong> Nenhum resultado foi encontrado &#128533;
-          </span>
+          </TodoItem.Empty>
         )}
-        {tasks?.map((task, i) => {
+        {items?.map((item, i) => {
           return (
-            <li key={task.id}>
-              <span>
-                {i + 1}
-                {task.required ? "*" : ""}.
-              </span>
-              <div className="todo__content">
-                <h3>
-                  {task.title}
-                  <span data-type={task.status} className="button__status">
-                    {task.status}
-                  </span>
-                </h3>
-                <p>{task.description}</p>
-
-                {task.links && task.links.length > 0 && (
-                  <div className="todo__links">
-                    {task?.links?.map((link) => (
-                      <a key={link.name} target="_blank" href={link.url}>
-                        {link.name}
-                      </a>
-                    ))}
-                  </div>
-                )}
-
-                <div className="todo__actions">
-                  <button onClick={() => handleDeleteTask(task.id)}>
-                    delete
-                  </button>
-
-                  <button onClick={() => handleChangeTaskStatus(task.id)}>
-                    change to{" "}
-                    <strong>
-                      <u>{toggleTaskStatus(task.status)}</u>
-                    </strong>
-                  </button>
-                </div>
-              </div>
-            </li>
+            <TodoItemProvider key={item.id} item={item}>
+              <TodoItem.ItemContainer>
+                <TodoItem.Index>
+                  {getItemIndex(i, item.required)}
+                </TodoItem.Index>
+                <TodoItem.Content>
+                  <TodoItem.Header>
+                    <TodoItem.Title>{item.title}</TodoItem.Title>
+                    <TodoItem.Status />
+                  </TodoItem.Header>
+                  <TodoItem.Description>
+                    {item.description}
+                  </TodoItem.Description>
+                  {item.links && item.links.length > 0 && (
+                    <TodoItem.LinksContainer>
+                      {item?.links?.map((link) => (
+                        <TodoItem.Link
+                          key={link.name}
+                          target="_blank"
+                          href={link.url}
+                        >
+                          {link.name}
+                        </TodoItem.Link>
+                      ))}
+                    </TodoItem.LinksContainer>
+                  )}
+                  <TodoItem.ActionsContainer>
+                    <TodoItem.Action onClick={() => handleDeleteItem(item.id)}>
+                      delete
+                    </TodoItem.Action>
+                    <TodoItem.ActionChangeStatus />
+                  </TodoItem.ActionsContainer>
+                </TodoItem.Content>
+              </TodoItem.ItemContainer>
+            </TodoItemProvider>
           );
         })}
-      </ul>
+      </TodoItem.Root>
     </div>
   );
 }
