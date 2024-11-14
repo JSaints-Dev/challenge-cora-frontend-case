@@ -100,7 +100,7 @@ export const TODO_LIST: ITodoTask[] = [
         <br />O contrato esta no <strong>README.md</strong> do projeto.
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
     links: [
       {
