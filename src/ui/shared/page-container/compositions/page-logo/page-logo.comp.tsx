@@ -1,6 +1,9 @@
-import { IPageLogoProps } from "./page-logo.types";
-import "./page-logo.styles.css";
+import { Logo } from "@jsaints-dev/cora-ui";
 
-export function PageLogo(props: IPageLogoProps) {
-  return <img className="page__logo" {...props} />
+export function PageLogo() {
+  return (
+    <div className="w-8 mb-2">
+      <Logo />
+    </div>
+  )
 }

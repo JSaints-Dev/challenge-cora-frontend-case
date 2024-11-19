@@ -1,10 +1,9 @@
 import { Children, FormEvent, useState } from "react";
 import { ITodoTask } from "./todo-list.types";
 import { TODO_LIST } from "./todo-list.constants";
-import { InputSearch } from "../../../../shared";
 import { TodoItem, TodoItemProvider } from "../todo-item";
 import "./todo-list.styles.css";
-import { Button } from "@jsaints-dev/cora-ui";
+import { Button, InputSearch } from "@jsaints-dev/cora-ui";
 
 function getItemIndex(index: number, required: boolean): string {
   return `${index + 1}${required ? "*" : ""}.`;

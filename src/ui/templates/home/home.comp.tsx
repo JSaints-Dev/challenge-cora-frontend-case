@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { routes } from "../../../router/routes";
-import logoImage from "../../../assets/logo.svg";
 import { PageContainer } from "../../shared";
 import "./home.styles.css";
 import { Button } from "@jsaints-dev/cora-ui";
@@ -8,7 +7,7 @@ import { Button } from "@jsaints-dev/cora-ui";
 export function HomeTemplate() {
   return (
     <PageContainer.Root>
-      <PageContainer.Logo src={logoImage} alt="Cora" title="Cora" />
+      <PageContainer.Logo />
       <PageContainer.Title>Hey There &#128075;</PageContainer.Title>
       <PageContainer.Subtitle>Tenha um ótimo teste!!!</PageContainer.Subtitle>
       <PageContainer.Description>

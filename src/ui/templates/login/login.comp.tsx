@@ -1,4 +1,3 @@
-import logoFullImage from "../../../assets/logo-full.svg";
 import arrowRightImage from "../../../assets/arrow-right.svg";
 import { useAuthRedirect } from "../../../hooks";
 import { useForm } from "../../../resources";
@@ -7,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { routes } from "../../../router";
 import { FormEvent } from "react";
 import { inputMask } from "../../../utils";
-import { Input } from "../../shared";
 import { validations } from "./login.validations";
 import { LoginFormValues } from "./login.types";
 import "./login.styles.css";
 import toast from "react-hot-toast";
+import { Button, Input, Logo } from "@jsaints-dev/cora-ui";
 
 export function LoginTemplate() {
   useAuthRedirect();
@@ -55,7 +54,7 @@ export function LoginTemplate() {
   return (
     <main className="login__container">
       <div className="login__container__logo">
-        <img src={logoFullImage} alt="Cora" title="Cora" />
+        <Logo variant="full" />
       </div>
       <form
         className="login__form__container"
@@ -68,6 +67,8 @@ export function LoginTemplate() {
             onInput={handleCPFInput}
             placeholder="Insira seu CPF"
             error={errors.cpf?.message}
+            className="w-full"
+            variant="white"
           />
 
           <Input
@@ -75,12 +76,14 @@ export function LoginTemplate() {
             type="password"
             placeholder="Insira sua senha"
             error={errors.password?.message}
+            className="w-full"
+            variant="white"
           />
         </div>
-        <button className="login__button">
+        <Button className="h-16 flex justify-between bg-white text-brand-primary rounded-2xl hover:bg-white/90">
           Continuar
           <img src={arrowRightImage} />
-        </button>
+        </Button>
       </form>
     </main>
   );

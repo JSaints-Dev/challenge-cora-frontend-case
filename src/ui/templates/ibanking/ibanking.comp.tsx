@@ -1,4 +1,3 @@
-// src/ui/templates/ibanking/ibanking.comp.tsx
 import { PageContainer } from "../../shared";
 import { FilterButtons } from "./compositions/filter-buttons/filter-buttons.comp";
 import { TransactionsList } from "./compositions/transactions-list/transactions-list.comp";
