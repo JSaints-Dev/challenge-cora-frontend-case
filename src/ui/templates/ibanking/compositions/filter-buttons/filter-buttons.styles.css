@@ -1,0 +1,9 @@
+.transactions__container__filter__transaction {
+  padding: .5rem 0 1rem;
+  display: flex;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  background-color: var(--custom-color-white);
+  z-index: 1;
+}

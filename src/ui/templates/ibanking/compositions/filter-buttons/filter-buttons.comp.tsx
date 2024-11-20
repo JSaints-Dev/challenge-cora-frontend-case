@@ -1,30 +1,55 @@
-import { Button } from "../../../../shared";
+import { Button } from "@jsaints-dev/cora-ui";
 import { FilterButtonsProps } from "./filter-buttons.types";
+import { ComponentProps } from "react";
+import './filter-buttons.styles.css';
 
-export function FilterButtons({ currentFilter, onFilterChange }: FilterButtonsProps) {
+export type FilterButtonProps = {
+  currentFilter: boolean;
+  onClick: () => void;
+} & ComponentProps<"button">;
+
+function FilterButton({
+  currentFilter,
+  onClick,
+  children,
+  ...props
+}: FilterButtonProps) {
+  return (
+    <Button
+      onClick={onClick}
+      data-active={currentFilter}
+      className="rounded-full bg-secondary text-primary hover:bg-primary/10 data-[active=true]:bg-primary data-[active=true]:text-secondary hover:data-[active=true]:bg-primary/90 transition-colors duration-300"
+      {...props}
+    >
+      {children}
+    </Button>
+  );
+}
+
+export function FilterButtons({
+  currentFilter,
+  onFilterChange,
+}: FilterButtonsProps) {
   return (
     <div className="transactions__container__filter__transaction">
-      <Button
+      <FilterButton
         onClick={() => onFilterChange("ALL")}
-        className="rounded__full"
-        variant={`${currentFilter === "ALL" ? "primary" : "secondary"}`}
+        currentFilter={currentFilter === "ALL"}
       >
         Todos
-      </Button>
-      <Button
+      </FilterButton>
+      <FilterButton
         onClick={() => onFilterChange("DEBIT")}
-        className="rounded__full"
-        variant={`${currentFilter === "DEBIT" ? "primary" : "secondary"}`}
+        currentFilter={currentFilter === "DEBIT"}
       >
         Débito
-      </Button>
-      <Button
+      </FilterButton>
+      <FilterButton
         onClick={() => onFilterChange("CREDIT")}
-        className="rounded__full"
-        variant={`${currentFilter === "CREDIT" ? "primary" : "secondary"}`}
+        currentFilter={currentFilter === "CREDIT"}
       >
         Crédito
-      </Button>
+      </FilterButton>
     </div>
   );
 }
