@@ -199,4 +199,26 @@ export const TODO_LIST: ITodoTask[] = [
     },
   ]
 },
+{
+  id: "be4f2532-aca4-46c8-83455adsfb8-c97fgLI9b7f",
+  ref: "1",
+  title: "Cora-hook-form",
+  description: (
+    <>
+      Para criar um formulário sem instalar bibliotecas de terceiros, decidi desenvolver um hook.
+      Esse hook facilita a criação de formulários e demonstra meu conhecimento em trabalhar com formulários
+      e hooks personalizados no React.
+      <br />
+      <br />
+      O hook é simples, foi baseado no useForm do react-hook-form, mas com algumas
+      modificações para atender a minha necessidade.
+      <br />
+      <br />
+      Pensando em performance, o hook não cria estado para cada campo, ele mantém o estado
+      nativo do campo, e apenas manipula via referência.
+    </>
+  ),
+  status: "done",
+  required: false,
+},
 ];
