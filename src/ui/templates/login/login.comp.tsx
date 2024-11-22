@@ -17,6 +17,7 @@ export function LoginTemplate() {
 
   const navigate = useNavigate();
 
+  // isso não é o react-hook-form, é um hook personalizado para mostrar conhecimento em formulários
   const {
     register,
     handleSubmit,
